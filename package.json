@@ -1,15 +1,16 @@
 {
   "name": "jobpath-server",
   "version": "1.0.0",
+  "type": "module",
   "description": "### [JobPath client](https://github.com/ChrGmz/jobpath-client)",
-  "main": "./src/index.js",
+  "main": "./src/index.ts",
   "scripts": {
     "test": "jest",
     "dev": "nodemon ./src/index.ts",
     "start": "node ./src/index.ts",
     "build": "rimraf ./build && tsc",
     "lint": "eslint . --ext .ts",
-    "commit": "cz"
+    "commit": "git-cz"
   },
   "jest": {
     "transform": {

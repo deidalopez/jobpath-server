@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
 require('dotenv').config();
+// const express = require("express");
 const app = express();
 import cors from 'cors';
 import { Sequelize } from "sequelize/types";
