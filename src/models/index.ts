@@ -1,12 +1,16 @@
-import {Sequelize} from 'sequelize'; 
+import * as dotenv from 'dotenv';
+import { Sequelize } from 'sequelize';
 
-declare var process: {
-  env: {
-    DB_CONNECTION_URI: string
-  }
-}
+dotenv.config();
 
-const DB_CONNECTION_URI = process.env.DB_CONNECTION_URI;
-const sequelize:Sequelize = new Sequelize(DB_CONNECTION_URI);
+const { DB_NAME, DB_USERNAME, DB_PASSWORD, DB_PORT, DB_HOST } = process.env;
+console.log(DB_NAME, DB_USERNAME, DB_PASSWORD, DB_PORT, DB_HOST);
+
+const sequelize: Sequelize = new Sequelize( DB_NAME || '', DB_USERNAME || '', DB_PASSWORD || '', {
+  host: DB_HOST,
+  port: DB_PORT ? +DB_PORT : 5432,
+  logging: console.log,
+  dialect: 'postgres',
+});
 
 export default sequelize;

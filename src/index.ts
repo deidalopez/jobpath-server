@@ -1,29 +1,35 @@
-import express, { Request, Response } from "express";
-require('dotenv').config();
+import express from 'express';
+import * as dotenv from 'dotenv';
+// import cors from 'cors';
+import sequelize from './models';
+
+dotenv.config();
+
 const app = express();
-import cors from 'cors';
-import { Sequelize } from "sequelize/types";
 
-import sequelize from '../src/models/index';
-const PORT = 3001;
+const { PORT } = process.env;
 
-const corsConfig= {
-  origin: process.env.CORS_ORIGIN,
-  credentials: true
-}
+// const corsConfig= {
+//   origin: process.env.CORS_ORIGIN,
+//   credentials: true
+// }
 
-app.use(cors(corsConfig));
-
+// app.use(cors(corsConfig));
 app.use(express.json());
-
-app.get("/", (req: Request, res: Response) => {
+app.get("/", (_, res) => {
   res.status(200).send("Hello World!");
 });
 
-sequelize.sync();
+(async () => {
+  try {
+    await sequelize.sync();
+    console.log('DB Connected!');
+  } catch (err) {
+    console.log('Error here!')
+    console.error(err);
+  }
+})();
 
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);
 });
-
-export default app;
