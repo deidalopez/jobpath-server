@@ -1,9 +1,10 @@
-import sequelize from "./index";
+import sequelize from "./db";
 import { DataTypes } from "sequelize";
 
-const Application = sequelize.define("application", {
-  user_id: {
-    type: DataTypes.NUMBER,
+const Application = sequelize.define('application', {
+  _id: {
+    type: DataTypes.STRING,
+    unique: true,
     allowNull: false,
   },
   companyName: {
@@ -14,15 +15,16 @@ const Application = sequelize.define("application", {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  applicationMethod: {
+  method: {
     type: DataTypes.STRING,
     allowNull: false,
   },
   status: {
     type: DataTypes.STRING,
     allowNull: false,
+    defaultValue: 'Applied',
   },
-  dateApplied: {
+  date: {
     type: DataTypes.DATE,
     allowNull: false,
   },

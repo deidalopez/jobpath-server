@@ -1,12 +1,28 @@
-import {Sequelize} from 'sequelize'; 
+import sequelize from './db';
+import Offer from './Offer.model';
+import Application from './Application.model';
+import Interview from './Interview.model';
+import User from './User.model';
 
-declare var process: {
-  env: {
-    DB_CONNECTION_URI: string
-  }
-}
+Offer.belongsTo(Application, {
+  foreignKey: 'application_id',
+  as: 'offers',
+});
 
-const DB_CONNECTION_URI = process.env.DB_CONNECTION_URI;
-const sequelize:Sequelize = new Sequelize(DB_CONNECTION_URI);
+Application.hasMany(Interview, {
+  foreignKey: 'application_id',
+  as: 'interviews',
+});
 
-export default sequelize;
+User.hasMany(Application, {
+  foreignKey: 'user_id',
+  as: 'applications',
+});
+
+export {
+  sequelize,
+  User,
+  Application,
+  Interview,
+  Offer,
+};
