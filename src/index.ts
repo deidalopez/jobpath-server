@@ -1,7 +1,8 @@
 import express from 'express';
 import * as dotenv from 'dotenv';
-// import cors from 'cors';
-import sequelize from './models';
+import cors from 'cors';
+import sequelize from './models/db';
+import router from './router';
 
 dotenv.config();
 
@@ -9,16 +10,14 @@ const app = express();
 
 const { PORT } = process.env;
 
-// const corsConfig= {
-//   origin: process.env.CORS_ORIGIN,
-//   credentials: true
-// }
+const corsConfig= {
+  origin: process.env.CORS_ORIGIN,
+  credentials: true
+}
 
-// app.use(cors(corsConfig));
+app.use(cors(corsConfig));
 app.use(express.json());
-app.get("/", (_, res) => {
-  res.status(200).send("Hello World!");
-});
+app.use(router);
 
 (async () => {
   try {

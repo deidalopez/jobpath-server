@@ -1,16 +1,28 @@
-import * as dotenv from 'dotenv';
-import { Sequelize } from 'sequelize';
+import sequelize from './db';
+import Offer from './Offer.model';
+import Application from './Application.model';
+import Interview from './Interview.model';
+import User from './User.model';
 
-dotenv.config();
-
-const { DB_NAME, DB_USERNAME, DB_PASSWORD, DB_PORT, DB_HOST } = process.env;
-console.log(DB_NAME, DB_USERNAME, DB_PASSWORD, DB_PORT, DB_HOST);
-
-const sequelize: Sequelize = new Sequelize( DB_NAME || '', DB_USERNAME || '', DB_PASSWORD || '', {
-  host: DB_HOST,
-  port: DB_PORT ? +DB_PORT : 5432,
-  logging: console.log,
-  dialect: 'postgres',
+Offer.belongsTo(Application, {
+  foreignKey: 'application_id',
+  as: 'offers',
 });
 
-export default sequelize;
+Application.hasMany(Interview, {
+  foreignKey: 'application_id',
+  as: 'interviews',
+});
+
+User.hasMany(Application, {
+  foreignKey: 'user_id',
+  as: 'applications',
+});
+
+export {
+  sequelize,
+  User,
+  Application,
+  Interview,
+  Offer,
+};
