@@ -1,27 +1,28 @@
-import sequelize from "./index";
-import { DataTypes } from "sequelize";
+import sequelize from './db'; 
+import { DataTypes } from 'sequelize'; 
 
-const Interview = sequelize.define("user", {
-  application_id: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  interviewStatus: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  interviewDate: {
+const Interview = sequelize.define('interview', {
+  date: {
     type: DataTypes.DATE,
     allowNull: false,
   },
-  interviewType: {
+  _id: {
+    type: DataTypes.STRING,
+    primaryKey: true,
+    unique: true,
+  },
+  status: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  type: {
     type: DataTypes.STRING,
     allowNull: false,
   },
   feedback: {
-    type: DataTypes.TEXT,
-    allowNull: true,
+    type: DataTypes.STRING,
+    allowNull: false,
   },
-});
+})
 
 export default Interview;

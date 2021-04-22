@@ -1,13 +1,20 @@
-import sequelize from './index'; 
-import {DataTypes} from 'sequelize'; 
+import sequelize from './db'; 
+import { DataTypes } from 'sequelize'; 
 
 const User = sequelize.define('user', {
+  _id: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    primaryKey: true,
+    unique: true,
+  },
   name: {
     type: DataTypes.STRING,
     allowNull: false
   },
   email: {
     type: DataTypes.STRING,
+    unique: true,
     allowNull: false
   }, 
   desiredJobTitle: {
@@ -19,9 +26,9 @@ const User = sequelize.define('user', {
     allowNull: true
   },
   salaryTarget: {
-    type: DataTypes.DECIMAL,
+    type: DataTypes.INTEGER,
     allowNull: false
-  }
-})
+  },
+});
 
 export default User;
