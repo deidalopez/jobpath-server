@@ -1,5 +1,6 @@
 import sequelize from './db'; 
-import { DataTypes } from 'sequelize'; 
+import { DataTypes } from 'sequelize';
+import { v4 as uuid } from 'uuid';
 
 const Offer = sequelize.define('offer', {
   date: {
@@ -10,6 +11,7 @@ const Offer = sequelize.define('offer', {
     type: DataTypes.STRING,
     primaryKey: true,
     unique: true,
+    defaultValue: uuid(),
   },
   employmentType: {
     type: DataTypes.STRING,

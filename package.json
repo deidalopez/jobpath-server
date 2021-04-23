@@ -1,7 +1,6 @@
 {
   "name": "jobpath-server",
   "version": "1.0.0",
-  "type": "module",
   "description": "### [JobPath client](https://github.com/ChrGmz/jobpath-client)",
   "main": "./src/index.ts",
   "scripts": {

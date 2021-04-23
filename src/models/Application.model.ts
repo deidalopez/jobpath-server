@@ -1,11 +1,13 @@
 import sequelize from "./db";
 import { DataTypes } from "sequelize";
+import { v4 as uuid } from 'uuid';
 
 const Application = sequelize.define('application', {
   _id: {
     type: DataTypes.STRING,
     unique: true,
     allowNull: false,
+    defaultValue: uuid(),
   },
   companyName: {
     type: DataTypes.STRING,
