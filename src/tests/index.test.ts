@@ -1,5 +1,5 @@
 import request from "supertest";
-import app from "../src/index";
+import app from "../index";
 
 describe("Test the root path", () => {
   test("It should response the GET method", () => {
