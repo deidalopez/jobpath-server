@@ -9,6 +9,10 @@ const Application = sequelize.define('application', {
     allowNull: false,
     defaultValue: uuid(),
   },
+  employmentType: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   companyName: {
     type: DataTypes.STRING,
     allowNull: false,

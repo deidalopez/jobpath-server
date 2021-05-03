@@ -8,8 +8,10 @@ export interface Application {
   _id: string;
   status: string;
   position: string;
+  salary?: number;
   user_id: string;
   companyName: string;
+  employmentType: string;
   interviews?: Model<InterviewInterface>[];
   offers?: Model<OfferInterface>[];
 }

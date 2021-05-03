@@ -16,6 +16,6 @@ router.post('/interviews', authenticate, createInterview);
 router.put('/interviews', authenticate, updateInterview);
 router.post('/offers', authenticate, createOffer);
 router.put('/offers', authenticate, updateOffer);
-router.get('/login', getApplications, getInterviews, getOffers);
+router.get('/applications', getApplications, getInterviews, getOffers);
 
 export default router;
