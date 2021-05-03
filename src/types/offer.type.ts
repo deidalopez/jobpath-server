@@ -5,4 +5,5 @@ export interface OfferInterface {
   salary: string;
   benefits: string[];
   application_id: string;
+  status: string;
 }
