@@ -11,11 +11,11 @@ const router = Router();
 router.post('/user', authenticate, createUser);
 router.put('/user', authenticate, updateUser);
 router.post('/applications', authenticate, createApplication);
-router.put('/applications', authenticate, updateApplication);
+router.put('/applications/:_id', authenticate, updateApplication);
 router.post('/interviews', authenticate, createInterview);
 router.put('/interviews', authenticate, updateInterview);
 router.post('/offers', authenticate, createOffer);
 router.put('/offers', authenticate, updateOffer);
-router.get('/applications', getApplications, getInterviews, getOffers);
+router.get('/applications', authenticate, getApplications, getInterviews, getOffers);
 
 export default router;

@@ -55,9 +55,7 @@ const getOffers = async (_: Request, res: Response): Promise<void | Response> =>
     res.locals.applications.forEach(async (app: Application) => {
       app.offers = await Offer.findAll<Model<OfferInterface>>({ where: { application_id: app._id}, raw: true });
     });
-    res.status(200).json({
-      ...res.locals.applications,
-    })
+    res.status(200).json(res.locals.applications);
   } catch (err) {
     res.status(500).json({ status: 500, error: err });
   }

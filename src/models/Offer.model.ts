@@ -4,7 +4,7 @@ import { v4 as uuid } from 'uuid';
 
 const Offer = sequelize.define('offer', {
   date: {
-    type: DataTypes.DATE,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   _id: {

@@ -22,7 +22,7 @@ const User = sequelize.define('user', {
     allowNull: true
   },
   dateStartedLooking: {
-    type: DataTypes.DATE,
+    type: DataTypes.STRING,
     allowNull: true
   },
   salaryTarget: {

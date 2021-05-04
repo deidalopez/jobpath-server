@@ -28,10 +28,9 @@ const Application = sequelize.define('application', {
   status: {
     type: DataTypes.STRING,
     allowNull: false,
-    defaultValue: 'Applied',
   },
   date: {
-    type: DataTypes.DATE,
+    type: DataTypes.STRING,
     allowNull: false,
   },
 });
